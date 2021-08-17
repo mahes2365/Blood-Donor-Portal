@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/home.css">
+    <title>Blood Donor Portal</title>
+</head>
+
+<body>
+    <section class="home" id="home">
+
+        <header class="header" id="header">
+            <div class="logo">
+                <a href="home.html" class="img"><img src="/images/logo1.svg" alt="logo"></a>
+                <a href="home.html">Blood Donation</a>
+            </div>
+            <div class="nav">
+                <nav><a href="#home">Home</a></nav>
+                <nav><a href="#search">Search Donor</a></nav>
+                <nav><a href="#donor">Be a Donor</a></nav>
+                <nav><a href="#sign_out" class="signout">Sign Out</a></nav>
+            </div>
+        </header>
+        <div class="content">
+            <div class="txt1">
+                <p>Welcome</p>&nbsp;
+                <label>Bhaskar</label>
+            </div>
+            <div class="txt2">
+                <p>Every Blood Donor Is a Life Saver
+                    <br> Donate Blood Save lives.</p>
+            </div>
+            <div class="homebtn">
+                <a href="#donor" class="donor">Donate Now</a>
+                <a href="#search" class="search">Need a Donor</a>
+            </div>
+        </div>
+    </section>
+    <section id="search" style="min-height: 100vh;"></section>
+    <section id="donor" style="min-height: 100vh;"></section>
+</body>
+<script>
+    var bar = document.querySelector('.header');
+
+
+    window.onscroll = function() {
+        var nav = window.scrollY;
+        if (nav >= 100) {
+            bar.classList.add('scroll');
+
+        } else {
+            bar.classList.remove('scroll');
+        }
+    };
+</script>
+
+</html>
