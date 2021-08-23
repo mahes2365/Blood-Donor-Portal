@@ -7,7 +7,9 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.IO;
 using searchprogram;
+
 public partial class registration : System.Web.UI.Page
 {
     Class1 obj = new Class1();
@@ -20,7 +22,7 @@ public partial class registration : System.Web.UI.Page
     string mail;
     string area;
     string pincode;
-    string proof;
+    
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -48,21 +50,28 @@ public partial class registration : System.Web.UI.Page
          mail = txtmail.Text;
          area = txtarea.Text;
          pincode = txtpincode.Text;
-         proof = fileuploadproof.FileName.ToString();
+        string filepath = Server.MapPath("~/proof/"+fileuploadproof.FileName);
         if (fileuploadproof.HasFile)
         {
-            fileuploadproof.PostedFile.SaveAs(Server.MapPath("~/proof/") + proof);
+            fileuploadproof.SaveAs(filepath);
+            
             //string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
             //SqlConnection con = new SqlConnection(constr);
             //SqlCommand cmd = new SqlCommand("insert into Donors_WaitingList values('" + name + "'," + age + ",'" + sex + "','" + bloodgroup + "','" + mobile_1 + "','" + mobile_2 + "','" + mail + "','" + area + "'," + pincode + ",'" + proof + "')", con);
             //con.Open();
             //cmd.ExecuteNonQuery();
-            obj.getDonorData("insert into Donors_WaitingList values('" + name + "'," + age + ",'" + sex + "','" + bloodgroup + "','" + mobile_1 + "','" + mobile_2 + "','" + mail + "','" + area + "'," + pincode + ",'" + proof + "')");
+            obj.getDonorData("insert into Donors_WaitingList values('" + name + "'," + age + ",'" + sex + "','" + bloodgroup + "','" + mobile_1 + "','" + mobile_2 + "','" + mail + "','" + area + "'," + pincode + ",'" + filepath + "')");
             Response.Write("You are A Donor Now");
         }
         else
         {
             Response.Write("file not provide");
         }
+    }
+
+    
+    protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+    
     }
 }
