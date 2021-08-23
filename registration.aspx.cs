@@ -48,7 +48,7 @@ public partial class registration : System.Web.UI.Page
          mail = txtmail.Text;
          area = txtarea.Text;
          pincode = txtpincode.Text;
-         proof = fileuploadproof.FileName.ToString();
+         proof = "~/Proof/"+fileuploadproof.FileName.ToString();
         if (fileuploadproof.HasFile)
         {
             fileuploadproof.PostedFile.SaveAs(Server.MapPath("~/proof/") + proof);
