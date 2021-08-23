@@ -7,9 +7,10 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using searchprogram;
 public partial class registration : System.Web.UI.Page
 {
-    
+    Class1 obj = new Class1();
     string name;
     string age;
     string sex;
@@ -51,11 +52,12 @@ public partial class registration : System.Web.UI.Page
         if (fileuploadproof.HasFile)
         {
             fileuploadproof.PostedFile.SaveAs(Server.MapPath("~/proof/") + proof);
-            string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
-            SqlConnection con = new SqlConnection(constr);
-            SqlCommand cmd = new SqlCommand("insert into Donors_WaitingList values('" + name + "'," + age + ",'" + sex + "','" + bloodgroup + "','" + mobile_1 + "','" + mobile_2 + "','" + mail + "','" + area + "'," + pincode + ",'" + proof + "')", con);
-            con.Open();
-            cmd.ExecuteNonQuery();
+            //string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+            //SqlConnection con = new SqlConnection(constr);
+            //SqlCommand cmd = new SqlCommand("insert into Donors_WaitingList values('" + name + "'," + age + ",'" + sex + "','" + bloodgroup + "','" + mobile_1 + "','" + mobile_2 + "','" + mail + "','" + area + "'," + pincode + ",'" + proof + "')", con);
+            //con.Open();
+            //cmd.ExecuteNonQuery();
+            obj.getDonorData("insert into Donors_WaitingList values('" + name + "'," + age + ",'" + sex + "','" + bloodgroup + "','" + mobile_1 + "','" + mobile_2 + "','" + mail + "','" + area + "'," + pincode + ",'" + proof + "')");
             Response.Write("You are A Donor Now");
         }
         else
