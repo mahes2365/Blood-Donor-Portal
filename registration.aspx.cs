@@ -22,7 +22,7 @@ public partial class registration : System.Web.UI.Page
     string mail;
     string area;
     string pincode;
-    
+    string proof;
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -50,17 +50,20 @@ public partial class registration : System.Web.UI.Page
          mail = txtmail.Text;
          area = txtarea.Text;
          pincode = txtpincode.Text;
-        string filepath = Server.MapPath("~/proof/"+fileuploadproof.FileName);
+        //string filepath = Server.MapPath("~/proof/"+fileuploadproof.PostedFile.FileName);
+        string filepath = Path.GetFileName(fileuploadproof.PostedFile.FileName);
+        fileuploadproof.SaveAs(Server.MapPath("~/proof/" + filepath));
+        proof = "proof/" + filepath;
         if (fileuploadproof.HasFile)
         {
-            fileuploadproof.SaveAs(filepath);
+        //    fileuploadproof.SaveAs(filepath);
             
             //string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
             //SqlConnection con = new SqlConnection(constr);
             //SqlCommand cmd = new SqlCommand("insert into Donors_WaitingList values('" + name + "'," + age + ",'" + sex + "','" + bloodgroup + "','" + mobile_1 + "','" + mobile_2 + "','" + mail + "','" + area + "'," + pincode + ",'" + proof + "')", con);
             //con.Open();
             //cmd.ExecuteNonQuery();
-            obj.getDonorData("insert into Donors_WaitingList values('" + name + "'," + age + ",'" + sex + "','" + bloodgroup + "','" + mobile_1 + "','" + mobile_2 + "','" + mail + "','" + area + "'," + pincode + ",'" + filepath + "')");
+            obj.getDonorData("insert into Donors_WaitingList values('" + name + "'," + age + ",'" + sex + "','" + bloodgroup + "','" + mobile_1 + "','" + mobile_2 + "','" + mail + "','" + area + "'," + pincode + ",'" + proof + "')");
             Response.Write("You are A Donor Now");
         }
         else
@@ -73,5 +76,17 @@ public partial class registration : System.Web.UI.Page
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
     {
     
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+
+        //string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+        //SqlConnection con = new SqlConnection(constr);
+        //SqlDataAdapter da = new SqlDataAdapter("select * from Donors_WaitingList", con);
+        //DataSet ds = new DataSet();
+        //da.Fill(ds);
+        //DetailsView1.DataSource = ds.Tables[0];
+        //DetailsView1.DataBind();
     }
 }
