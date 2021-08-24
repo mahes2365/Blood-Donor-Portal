@@ -26,7 +26,6 @@ public partial class registration : System.Web.UI.Page
     string proof;
     protected void Page_Load(object sender, EventArgs e)
     {
-
     }
     protected void rbtmale_CheckedChanged(object sender, EventArgs e)
     {
@@ -66,6 +65,8 @@ public partial class registration : System.Web.UI.Page
             //cmd.ExecuteNonQuery();
             obj.getDonorData("insert into Donors_WaitingList values('" + name + "'," + age + ",'" + sex + "','" + bloodgroup + "','" + mobile_1 + "','" + mobile_2 + "','" + mail + "','" + area + "'," + pincode + ",'" + proof + "')");
             Response.Write("You are A Donor Now");
+           
+
         }
         else
         {
@@ -73,8 +74,31 @@ public partial class registration : System.Web.UI.Page
         }
     }
 
-    
-    
-
-    
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        txtname.Text = "";
+        txtage.Text = "";
+        if (rbtmale.Checked)
+        {
+            rbtmale.Checked = false;
+        }
+        else if (rbtfemale.Checked)
+        {
+            rbtfemale.Checked = false;
+        }
+        else
+        {
+            rbtothers.Checked = false;
+        }
+        ddlbloodgroup.ClearSelection();
+        txtmobileno1.Text = "";
+        txtmobileno2.Text = "";
+        txtmail.Text = "";
+        txtarea2.Text = "";
+        txtpincode.Text = "";
+        if(fileuploadproof.HasFile)
+        {
+            fileuploadproof.Dispose();
+        }
+    }
 }
