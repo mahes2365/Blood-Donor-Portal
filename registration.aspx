@@ -130,7 +130,7 @@
             <tr>
                 <td class="auto-style1">
             <asp:Label ID="lblarea" runat="server" Text="Area"></asp:Label></td>
-                <td colspan="2">:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtarea" runat="server" Height="30px" Width="250px"></asp:TextBox>
+                <td colspan="2">:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtarea2" runat="server" Height="30px" Width="250px"></asp:TextBox>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:RequiredFieldValidator ID="rvfarea" runat="server" ControlToValidate="txtarea" ErrorMessage="Field could not be empty" ForeColor="Red" ValidationGroup="form"></asp:RequiredFieldValidator>
                 </td>
