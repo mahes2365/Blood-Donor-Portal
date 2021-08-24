@@ -48,7 +48,7 @@ public partial class registration : System.Web.UI.Page
          mobile_1 = txtmobileno1.Text;
          mobile_2 = txtmobileno2.Text;
          mail = txtmail.Text;
-         area = txtarea.Text;
+         area = txtarea2.Text;
          pincode = txtpincode.Text;
         //string filepath = Server.MapPath("~/proof/"+fileuploadproof.PostedFile.FileName);
         string filepath = Path.GetFileName(fileuploadproof.PostedFile.FileName);
